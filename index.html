@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pedagogia da Lari</title>
+<meta name="description" content="Materiais pedagógicos digitais com carinho: slides interativos, atividades e recursos para a sala de aula.">
+<link rel="icon" href="logo.jpg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: panes de vidro líquido flutuando sobre um campo de bolhas rosas que se fundem devagar */
+:root{
+  --bg:#FFF0F6; --ink:#4A1631; --muted:#8C4A69; --berry:#C2185B; --on-berry:#FFF5FA;
+  --glass:rgba(255,255,255,.42); --glass-hi:rgba(255,255,255,.9); --glass-edge:rgba(255,255,255,.75);
+  --shadow:rgba(194,24,91,.20); --blob1:#FF8FC0; --blob2:#C9A7FF; --blob3:#FFC1A6; --chip:rgba(255,255,255,.55);
+  --f-brand:'Dancing Script','Brush Script MT',cursive; --f-head:'Fredoka','Trebuchet MS',sans-serif; --f-body:'Nunito','Segoe UI',Verdana,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1F0A17; --ink:#FFE8F2; --muted:#E7A9C6; --berry:#FF6FAA; --on-berry:#2A0A1C;
+  --glass:rgba(255,255,255,.08); --glass-hi:rgba(255,255,255,.35); --glass-edge:rgba(255,255,255,.22);
+  --shadow:rgba(0,0,0,.45); --blob1:#A51D60; --blob2:#5B2A9E; --blob3:#8A3A2E; --chip:rgba(255,255,255,.1); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1F0A17; --ink:#FFE8F2; --muted:#E7A9C6; --berry:#FF6FAA; --on-berry:#2A0A1C;
+  --glass:rgba(255,255,255,.08); --glass-hi:rgba(255,255,255,.35); --glass-edge:rgba(255,255,255,.22);
+  --shadow:rgba(0,0,0,.45); --blob1:#A51D60; --blob2:#5B2A9E; --blob3:#8A3A2E; --chip:rgba(255,255,255,.1); color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-head);line-height:1.12;margin:0;text-wrap:balance}
+.liquid{position:fixed;inset:0;z-index:0;filter:blur(60px) saturate(140%);opacity:.75;pointer-events:none}
+.liquid i{position:absolute;border-radius:50%;animation:drift 22s ease-in-out infinite alternate}
+.liquid i:nth-child(1){width:46vmax;height:46vmax;left:-10vmax;top:-12vmax;background:var(--blob1)}
+.liquid i:nth-child(2){width:38vmax;height:38vmax;right:-8vmax;top:18vh;background:var(--blob2);animation-duration:27s}
+.liquid i:nth-child(3){width:34vmax;height:34vmax;left:22vw;bottom:-14vmax;background:var(--blob3);animation-duration:31s}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(6vmax,4vmax) scale(1.12)}100%{transform:translate(-4vmax,7vmax) scale(.94)}}
+.wrap{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding-inline:16px;padding-block:20px 48px;display:flex;flex-direction:column;gap:72px}
+.glass{position:relative;background:linear-gradient(140deg,var(--glass-hi) -40%,var(--glass) 45%);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);
+  border:1px solid var(--glass-edge);border-radius:28px;box-shadow:inset 0 1px 0 var(--glass-hi),inset 0 -14px 30px rgba(255,255,255,.08),0 24px 60px -20px var(--shadow);overflow:hidden}
+.glass::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:radial-gradient(420px circle at var(--mx,30%) var(--my,0%),rgba(255,255,255,.55),transparent 45%);mix-blend-mode:soft-light;transition:opacity .3s}
+nav.glass{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);z-index:5;display:flex;align-items:center;gap:16px;padding:8px 10px 8px 8px;border-radius:999px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.brand img{width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--glass-edge)}
+.brand span{font-family:var(--f-brand);font-weight:700;font-size:1.65rem;color:var(--berry);white-space:nowrap}
+.links{display:flex;gap:4px;margin-left:auto}
+.links a{text-decoration:none;font-weight:700;font-size:.95rem;padding:8px 14px;border-radius:999px;color:var(--muted)}
+.links a:hover,.links a:focus-visible{background:var(--chip);color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;justify-content:center;font-family:var(--f-head);font-weight:600;font-size:1.05rem;text-decoration:none;padding:13px 22px;border-radius:999px;border:1px solid var(--glass-edge);cursor:pointer;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible,.links a:focus-visible,.thumbs button:focus-visible{outline:3px solid var(--berry);outline-offset:3px}
+.btn-main{background:linear-gradient(180deg,color-mix(in srgb,var(--berry) 82%,white),var(--berry));color:var(--on-berry);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 12px 26px -10px var(--berry)}
+.btn-glass{background:var(--chip);color:var(--ink);backdrop-filter:blur(12px)}
+nav .btn{margin-left:8px;padding:10px 18px;font-size:.95rem}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding-top:24px}
+.hero > div{min-width:0}
+.eyebrow{display:inline-block;font-weight:800;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--berry);background:var(--chip);border:1px solid var(--glass-edge);padding:6px 14px;border-radius:999px}
+.hero h1{font-size:clamp(2.3rem,5.2vw,4rem);margin:18px 0 16px}
+.hero h1 em{font-family:var(--f-brand);font-style:normal;color:var(--berry);font-size:1.15em}
+.lead{font-size:1.15rem;color:var(--muted);max-width:34em;margin:0 0 26px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.lens{position:relative;width:min(100%,430px);aspect-ratio:1;margin-inline:auto;border-radius:50%;padding:16px;animation:float 6s ease-in-out infinite}
+.lens img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+@keyframes float{50%{transform:translateY(-14px)}}
+.tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px}
+.tags span{font-weight:700;font-size:.9rem;padding:7px 15px;border-radius:999px;background:var(--chip);border:1px solid var(--glass-edge);backdrop-filter:blur(10px)}
+.sec-head{display:flex;flex-direction:column;gap:10px;max-width:40em}
+.sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem)}
+.sec-head p{margin:0;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:28px;scroll-margin-top:96px}
+.product{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;padding:26px}
+.product > div{min-width:0}
+.shot{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:18px;display:block;box-shadow:0 18px 40px -18px var(--shadow)}
+.thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:12px}
+.thumbs button{padding:0;border:2px solid transparent;border-radius:12px;overflow:hidden;cursor:pointer;background:none;opacity:.7;transition:opacity .2s,border-color .2s}
+.thumbs button[aria-current="true"]{border-color:var(--berry);opacity:1}
+.thumbs img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.badges{display:flex;gap:8px;flex-wrap:wrap}
+.badge{font-weight:800;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;background:var(--berry);color:var(--on-berry)}
+.badge.soft{background:var(--chip);color:var(--berry);border:1px solid var(--glass-edge)}
+.product h3{font-size:clamp(1.7rem,3vw,2.2rem);margin:14px 0 8px}
+.product p{margin:0 0 16px;color:var(--muted)}
+.facts{list-style:none;margin:0 0 18px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.facts li{background:var(--chip);border:1px solid var(--glass-edge);border-radius:16px;padding:10px 14px;line-height:1.3;font-size:.9rem;color:var(--muted)}
+.facts b{display:block;font-family:var(--f-head);font-size:1.5rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.skills{font-size:.85rem;color:var(--muted);margin-bottom:18px}
+.skills code{font-family:var(--f-body);font-weight:800;font-size:.8rem;color:var(--berry);background:var(--chip);border:1px solid var(--glass-edge);border-radius:8px;padding:2px 7px;margin:2px;display:inline-block}
+.buy{display:flex;align-items:center;flex-wrap:wrap;gap:14px;justify-content:space-between;padding-top:16px;border-top:1px dashed var(--glass-edge)}
+.price{font-family:var(--f-head);font-size:1.6rem;font-weight:700}
+.price small{display:block;font-family:var(--f-body);font-size:.8rem;font-weight:700;color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
+.step{padding:24px;display:flex;flex-direction:column;gap:8px}
+.step::after{counter-increment:s;content:counter(s);position:absolute;right:18px;top:10px;font-family:var(--f-brand);font-size:3.4rem;font-weight:700;color:var(--berry);opacity:.35}
+.step h3{font-size:1.3rem;padding-right:36px}
+.step p{margin:0;color:var(--muted);font-size:.98rem}
+.soon{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.soon .glass{padding:20px;text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center}
+.soon h3{font-size:1.15rem}
+.soon small{font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:.7rem;color:var(--berry)}
+.contact{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;padding:30px}
+.contact img{width:150px;height:150px;border-radius:50%;object-fit:cover}
+.contact h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:8px}
+.contact p{margin:0 0 16px;color:var(--muted)}
+.contact dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0 0 18px}
+.contact dt{font-weight:800}
+.contact dd{margin:0;color:var(--muted);overflow-wrap:anywhere}
+footer{text-align:center;color:var(--muted);font-size:.9rem}
+footer .brandline{font-family:var(--f-brand);font-size:1.8rem;color:var(--berry);display:block}
+@media (max-width:900px){.hero,.product{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.soon{grid-template-columns:1fr 1fr}.lens{width:min(100%,340px)}}
+@media (max-width:640px){.links{display:none}nav .btn{margin-left:auto}.facts{grid-template-columns:1fr 1fr}.contact{grid-template-columns:1fr;text-align:center;justify-items:center}.contact dl{text-align:left}.brand span{font-size:1.35rem}.product{padding:16px}.thumbs{gap:6px}}
+@media (prefers-reduced-motion:reduce){.liquid i,.lens{animation:none}.btn{transition:none}}
+</style>
+</head>
+<body>
+<div class="liquid" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="wrap">
+  <nav class="glass" aria-label="Principal">
+    <a class="brand" href="#inicio"><img src="logo.jpg" alt=""><span>Pedagogia da Lari</span></a>
+    <div class="links"><a href="#materiais">Materiais</a><a href="#como-funciona">Como funciona</a><a href="#contato">Contato</a></div>
+    <a class="btn btn-main js-whats" href="#contato">Falar comigo</a>
+  </nav>
+
+  <header class="hero" id="inicio">
+    <div>
+      <span class="eyebrow">Materiais pedagógicos digitais</span>
+      <h1>Aulas que <em>encantam</em> a turma e aliviam o seu planejamento</h1>
+      <p class="lead">Slides interativos, atividades e recursos prontos para usar em sala, feitos com carinho para professoras e professores do Ensino Fundamental.</p>
+      <div class="cta"><a class="btn btn-main" href="#materiais">Ver os materiais</a><a class="btn btn-glass js-whats" href="#contato">Tirar uma dúvida</a></div>
+    </div>
+    <div>
+      <div class="lens glass"><img src="logo.jpg" alt="Logo Pedagogia da Lari: professora de óculos e laço rosa estudando ao lado de livros de Planejamento, Atividades, Educação, Inclusão e Aprendizagem"></div>
+      <div class="tags" aria-label="Temas"><span>Planejamento</span><span>Atividades</span><span>Educação</span><span>Inclusão</span><span>Aprendizagem</span></div>
+    </div>
+  </header>
+
+  <section id="materiais" aria-labelledby="t-materiais">
+    <div class="sec-head"><span class="eyebrow">Primeiro material</span><h2 id="t-materiais">Desafio de Leitura · 5º Ano</h2><p>Uma aula inteira de Língua Portuguesa pronta para projetar: a turma lê no telão, responde e descobre a resposta junto com você.</p></div>
+    <article class="product glass">
+      <div>
+        <img class="shot" id="shot" src="img/capa.jpg" alt="Capa do Desafio de Leitura">
+        <div class="thumbs" role="group" aria-label="Fotos do material">
+          <button type="button" aria-current="true" data-src="img/capa.jpg" data-alt="Capa do Desafio de Leitura"><img src="img/capa.jpg" alt=""></button>
+          <button type="button" data-src="img/como-funciona.jpg" data-alt="Slide Como vai funcionar"><img src="img/como-funciona.jpg" alt=""></button>
+          <button type="button" data-src="img/texto.jpg" data-alt="Slide de leitura com o texto no telão"><img src="img/texto.jpg" alt=""></button>
+          <button type="button" data-src="img/questao.jpg" data-alt="Slide de questão com a resposta certa destacada"><img src="img/questao.jpg" alt=""></button>
+          <button type="button" data-src="img/parabens.jpg" data-alt="Slide final Parabéns, leitores campeões"><img src="img/parabens.jpg" alt=""></button>
+        </div>
+      </div>
+      <div>
+        <div class="badges"><span class="badge">Novo</span><span class="badge soft">Língua Portuguesa</span><span class="badge soft">5º ano</span></div>
+        <h3>Slides animados com textos e questões</h3>
+        <p>Cada texto aparece no telão para a leitura coletiva. Logo depois vêm as perguntas de A a D, e um clique revela a resposta certa com um círculo verde.</p>
+        <ul class="facts">
+          <li><b>53</b>slides coloridos e animados</li>
+          <li><b>22</b>questões de múltipla escolha</li>
+          <li><b>18</b>leituras: contos, poema, tirinhas, notícia e mais</li>
+          <li><b>PDF</b>de 75 páginas para imprimir ou enviar</li>
+        </ul>
+        <div class="skills">Descritores trabalhados:<br><code>D016</code><code>D017</code><code>D019</code><code>D021</code><code>D022</code><code>D023</code><code>D025</code><code>D028</code><code>D030</code><code>D037</code><code>D038</code><code>D039</code><code>D057</code><code>D103</code></div>
+        <div class="buy"><div class="price" id="price">Preço em breve<small>Gabarito conferido e anotações para a professora</small></div><a class="btn btn-main js-whats" data-msg="Oi! Quero o Desafio de Leitura do 5º ano." href="#contato">Quero este material</a></div>
+      </div>
+    </article>
+  </section>
+
+  <section id="como-funciona" aria-labelledby="t-como">
+    <div class="sec-head"><span class="eyebrow">Na sala de aula</span><h2 id="t-como">Como a aula acontece</h2></div>
+    <div class="steps">
+      <div class="step glass"><h3>Leitura no telão</h3><p>O texto aparece grande, com desenho e divisão em partes, para a turma ler junta em voz alta.</p></div>
+      <div class="step glass"><h3>Pergunta A, B, C ou D</h3><p>Cada aluno pensa sozinho, a turma vota e alguém explica a escolha com uma pista do texto.</p></div>
+      <div class="step glass"><h3>A resposta aparece</h3><p>Um clique destaca a alternativa certa. As anotações de cada slide trazem a explicação pronta.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-breve">
+    <div class="sec-head"><span class="eyebrow">Vem aí</span><h2 id="t-breve">Próximos materiais</h2></div>
+    <div class="soon">
+      <div class="glass"><small>Em breve</small><h3>Planejamento</h3></div>
+      <div class="glass"><small>Em breve</small><h3>Atividades</h3></div>
+      <div class="glass"><small>Em breve</small><h3>Inclusão</h3></div>
+      <div class="glass"><small>Em breve</small><h3>Aprendizagem</h3></div>
+    </div>
+  </section>
+
+  <section id="contato" aria-labelledby="t-contato">
+    <div class="contact glass">
+      <img src="logo.jpg" alt="">
+      <div>
+        <h2 id="t-contato">Vamos conversar?</h2>
+        <p>Para comprar um material ou tirar dúvidas, fale comigo pelos canais abaixo.</p>
+        <dl><dt>WhatsApp</dt><dd id="c-whats">em breve</dd><dt>Instagram</dt><dd id="c-insta">em breve</dd></dl>
+        <a class="btn btn-main js-whats" href="#contato">Chamar no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <footer><span class="brandline">Pedagogia da Lari</span>Planejamento · Atividades · Educação · Inclusão · Aprendizagem<br>© <span id="year">2026</span> Pedagogia da Lari</footer>
+</div>
+
+<script>
+/* Preencha aqui: número com DDI e DDD (ex.: 5581999999999), @ do Instagram e preço (ex.: "R$ 19,90"). */
+const CONFIG = { whatsapp: "", instagram: "", preco: "" };
+
+const msgPadrao = "Oi! Vim pelo site Pedagogia da Lari.";
+document.querySelectorAll(".js-whats").forEach(a => {
+  if (!CONFIG.whatsapp) return;
+  a.href = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(a.dataset.msg || msgPadrao);
+  a.target = "_blank"; a.rel = "noopener";
+});
+if (CONFIG.whatsapp) document.getElementById("c-whats").textContent = "+" + CONFIG.whatsapp;
+if (CONFIG.instagram) document.getElementById("c-insta").textContent = "@" + CONFIG.instagram.replace(/^@/, "");
+if (CONFIG.preco) document.getElementById("price").firstChild.textContent = CONFIG.preco;
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const shot = document.getElementById("shot");
+document.querySelectorAll(".thumbs button").forEach(b => b.addEventListener("click", () => {
+  shot.src = b.dataset.src; shot.alt = b.dataset.alt;
+  document.querySelectorAll(".thumbs button").forEach(x => x.setAttribute("aria-current", x === b ? "true" : "false"));
+}));
+
+/* Brilho do vidro líquido segue o ponteiro */
+document.addEventListener("pointermove", e => {
+  document.querySelectorAll(".glass").forEach(g => {
+    const r = g.getBoundingClientRect();
+    g.style.setProperty("--mx", (e.clientX - r.left) + "px");
+    g.style.setProperty("--my", (e.clientY - r.top) + "px");
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
