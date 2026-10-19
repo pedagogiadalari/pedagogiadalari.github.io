@@ -87,6 +87,13 @@ section{display:flex;flex-direction:column;gap:28px;scroll-margin-top:96px}
 .buy{display:flex;align-items:center;flex-wrap:wrap;gap:14px;justify-content:space-between;padding-top:16px;border-top:1px dashed var(--glass-edge)}
 .price{font-family:var(--f-head);font-size:1.6rem;font-weight:700}
 .price small{display:block;font-family:var(--f-body);font-size:.8rem;font-weight:700;color:var(--muted)}
+.btn{white-space:nowrap}
+.products{display:flex;flex-direction:column;gap:28px}
+.product.paper .shot{aspect-ratio:auto;height:auto;max-height:440px;object-fit:contain;background:#fff}
+.product.paper .thumbs{grid-template-columns:repeat(5,1fr)}
+.sec-head .eyebrow{align-self:flex-start}
+.product.paper .thumbs img{aspect-ratio:3/4}
+.secure{font-size:.82rem;font-weight:700;color:var(--muted);margin:10px 0 0}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
 .step{padding:24px;display:flex;flex-direction:column;gap:8px}
 .step::after{counter-increment:s;content:counter(s);position:absolute;right:18px;top:10px;font-family:var(--f-brand);font-size:3.4rem;font-weight:700;color:var(--berry);opacity:.35}
@@ -115,8 +122,8 @@ footer .brandline{font-family:var(--f-brand);font-size:1.8rem;color:var(--berry)
 <div class="wrap">
   <nav class="glass" aria-label="Principal">
     <a class="brand" href="#inicio"><img src="logo.jpg" alt=""><span>Pedagogia da Lari</span></a>
-    <div class="links"><a href="#materiais">Materiais</a><a href="#como-funciona">Como funciona</a><a href="#contato">Contato</a></div>
-    <a class="btn btn-main js-whats" href="#contato">Falar comigo</a>
+    <div class="links"><a href="#materiais">Materiais</a><a href="#como-comprar">Como comprar</a><a href="#contato">Contato</a></div>
+    <a class="btn btn-main" href="https://aluno.cakto.com.br/auth/login">Entrar</a>
   </nav>
 
   <header class="hero" id="inicio">
@@ -124,7 +131,7 @@ footer .brandline{font-family:var(--f-brand);font-size:1.8rem;color:var(--berry)
       <span class="eyebrow">Materiais pedagógicos digitais</span>
       <h1>Aulas que <em>encantam</em> a turma e aliviam o seu planejamento</h1>
       <p class="lead">Slides interativos, atividades e recursos prontos para usar em sala, feitos com carinho para professoras e professores do Ensino Fundamental.</p>
-      <div class="cta"><a class="btn btn-main" href="#materiais">Ver os materiais</a><a class="btn btn-glass js-whats" href="#contato">Tirar uma dúvida</a></div>
+      <div class="cta"><a class="btn btn-main" href="#materiais">Ver os materiais</a><a class="btn btn-glass" href="https://aluno.cakto.com.br/auth/login">Já comprei · Entrar</a></div>
     </div>
     <div>
       <div class="lens glass"><img src="logo.jpg" alt="Logo Pedagogia da Lari: professora de óculos e laço rosa estudando ao lado de livros de Planejamento, Atividades, Educação, Inclusão e Aprendizagem"></div>
@@ -133,11 +140,12 @@ footer .brandline{font-family:var(--f-brand);font-size:1.8rem;color:var(--berry)
   </header>
 
   <section id="materiais" aria-labelledby="t-materiais">
-    <div class="sec-head"><span class="eyebrow">Primeiro material</span><h2 id="t-materiais">Desafio de Leitura · 5º Ano</h2><p>Uma aula inteira de Língua Portuguesa pronta para projetar: a turma lê no telão, responde e descobre a resposta junto com você.</p></div>
+    <div class="sec-head"><span class="eyebrow">Materiais prontos</span><h2 id="t-materiais">Escolha o seu material</h2><p>Pague com Pix ou cartão e receba o acesso na hora, por e-mail. Os slides animados abrem no navegador e funcionam até sem internet.</p></div>
+    <div class="products">
     <article class="product glass">
       <div>
-        <img class="shot" id="shot" src="img/capa.jpg" alt="Capa do Desafio de Leitura">
-        <div class="thumbs" role="group" aria-label="Fotos do material">
+        <img class="shot" src="img/capa.jpg" alt="Capa do Desafio de Leitura">
+        <div class="thumbs" role="group" aria-label="Fotos do Desafio de Leitura">
           <button type="button" aria-current="true" data-src="img/capa.jpg" data-alt="Capa do Desafio de Leitura"><img src="img/capa.jpg" alt=""></button>
           <button type="button" data-src="img/como-funciona.jpg" data-alt="Slide Como vai funcionar"><img src="img/como-funciona.jpg" alt=""></button>
           <button type="button" data-src="img/texto.jpg" data-alt="Slide de leitura com o texto no telão"><img src="img/texto.jpg" alt=""></button>
@@ -146,19 +154,77 @@ footer .brandline{font-family:var(--f-brand);font-size:1.8rem;color:var(--berry)
         </div>
       </div>
       <div>
-        <div class="badges"><span class="badge">Novo</span><span class="badge soft">Língua Portuguesa</span><span class="badge soft">5º ano</span></div>
-        <h3>Slides animados com textos e questões</h3>
+        <div class="badges"><span class="badge">Língua Portuguesa</span><span class="badge soft">5º ano</span><span class="badge soft">Slides + PDF</span></div>
+        <h3>Desafio de Leitura</h3>
         <p>Cada texto aparece no telão para a leitura coletiva. Logo depois vêm as perguntas de A a D, e um clique revela a resposta certa com um círculo verde.</p>
         <ul class="facts">
           <li><b>53</b>slides coloridos e animados</li>
           <li><b>22</b>questões de múltipla escolha</li>
           <li><b>18</b>leituras: contos, poema, tirinhas, notícia e mais</li>
-          <li><b>PDF</b>de 75 páginas para imprimir ou enviar</li>
+          <li><b>PDF</b>de 75 páginas para imprimir ou projetar</li>
         </ul>
         <div class="skills">Descritores trabalhados:<br><code>D016</code><code>D017</code><code>D019</code><code>D021</code><code>D022</code><code>D023</code><code>D025</code><code>D028</code><code>D030</code><code>D037</code><code>D038</code><code>D039</code><code>D057</code><code>D103</code></div>
-        <div class="buy"><div class="price" id="price">Preço em breve<small>Gabarito conferido e anotações para a professora</small></div><a class="btn btn-main js-whats" data-msg="Oi! Quero o Desafio de Leitura do 5º ano." href="#contato">Quero este material</a></div>
+        <div class="buy"><div class="price">R$ 30,00<small>Pagamento único · acesso imediato</small></div><a class="btn btn-main" href="https://pay.cakto.com.br/mkzgfax_1219472">Comprar agora</a></div>
       </div>
     </article>
+
+    <article class="product glass">
+      <div>
+        <img class="shot" src="img/mat-capa.jpg" alt="Capa do Matemática sem Mistério">
+        <div class="thumbs" role="group" aria-label="Fotos do Matemática sem Mistério">
+          <button type="button" aria-current="true" data-src="img/mat-capa.jpg" data-alt="Capa do Matemática sem Mistério"><img src="img/mat-capa.jpg" alt=""></button>
+          <button type="button" data-src="img/mat-aprender.jpg" data-alt="Slide Vamos aprender: o que é adição"><img src="img/mat-aprender.jpg" alt=""></button>
+          <button type="button" data-src="img/mat-praticar.jpg" data-alt="Slide Vamos praticar: conta armada passo a passo"><img src="img/mat-praticar.jpg" alt=""></button>
+          <button type="button" data-src="img/mat-questao.jpg" data-alt="Slide da questão 23 com as alternativas"><img src="img/mat-questao.jpg" alt=""></button>
+          <button type="button" data-src="img/mat-correcao.jpg" data-alt="Slide Como resolver com a resposta certa"><img src="img/mat-correcao.jpg" alt=""></button>
+        </div>
+      </div>
+      <div>
+        <div class="badges"><span class="badge">Novo</span><span class="badge soft">Matemática</span><span class="badge soft">5º ano</span></div>
+        <h3>Matemática sem Mistério</h3>
+        <p>Antes de cada questão, os slides ensinam o conteúdo e praticam um exemplo passo a passo. Só depois vem a pergunta, e no fim a correção mostra como resolver.</p>
+        <ul class="facts">
+          <li><b>92</b>slides animados</li>
+          <li><b>22</b>questões explicadas (23 a 44)</li>
+          <li><b>4</b>etapas: aprende, pratica, responde e corrige</li>
+          <li><b>PDF</b>de 92 páginas para imprimir ou projetar</li>
+        </ul>
+        <div class="skills">Conteúdos:<br><code>Adição</code><code>Subtração</code><code>Multiplicação</code><code>Frações</code><code>Decimais</code><code>Área</code><code>Gráficos</code><code>Tabelas</code><code>Sólidos</code><code>Medidas</code></div>
+        <div class="buy"><div class="price">R$ 30,00<small>Pagamento único · acesso imediato</small></div><a class="btn btn-main" href="https://pay.cakto.com.br/3ak8c2m_1219488">Comprar agora</a></div>
+      </div>
+    </article>
+
+    <article class="product paper glass">
+      <div>
+        <img class="shot" src="img/ativ-1.jpg" alt="Primeira página da Atividade de Matemática">
+        <div class="thumbs" role="group" aria-label="Páginas da Atividade de Matemática">
+          <button type="button" aria-current="true" data-src="img/ativ-1.jpg" data-alt="Primeira página da Atividade de Matemática"><img src="img/ativ-1.jpg" alt=""></button>
+          <button type="button" data-src="img/ativ-2.jpg" data-alt="Segunda página da Atividade de Matemática"><img src="img/ativ-2.jpg" alt=""></button>
+          <button type="button" data-src="img/ativ-3.jpg" data-alt="Terceira página da Atividade de Matemática"><img src="img/ativ-3.jpg" alt=""></button>
+        </div>
+      </div>
+      <div>
+        <div class="badges"><span class="badge">Para imprimir</span><span class="badge soft">Matemática</span><span class="badge soft">5º ano</span></div>
+        <h3>Atividade de Matemática</h3>
+        <p>As questões 23 a 44 em folhas caprichadas para os alunos responderem no papel. Combina com os slides do Matemática sem Mistério.</p>
+        <ul class="facts">
+          <li><b>8</b>páginas A4</li>
+          <li><b>22</b>questões de A a D</li>
+        </ul>
+        <div class="buy"><div class="price">R$ 5,00<small>PDF · acesso imediato</small></div><a class="btn btn-main" href="https://pay.cakto.com.br/34vpvvu_1219492">Comprar agora</a></div>
+      </div>
+    </article>
+    </div>
+  </section>
+
+  <section id="como-comprar" aria-labelledby="t-comprar">
+    <div class="sec-head"><span class="eyebrow">Simples e seguro</span><h2 id="t-comprar">Como comprar</h2><p>O pagamento é feito pela Cakto, uma plataforma segura de pagamentos.</p></div>
+    <div class="steps">
+      <div class="step glass"><h3>Escolha e pague</h3><p>Clique em "Comprar agora" e pague com Pix ou cartão de crédito.</p></div>
+      <div class="step glass"><h3>Receba o acesso</h3><p>Assim que o pagamento é aprovado, chega um e-mail da Cakto com o seu login.</p></div>
+      <div class="step glass"><h3>Baixe os materiais</h3><p>Entre na área de membros e baixe os slides animados e os PDFs quando quiser.</p></div>
+    </div>
+    <div class="cta"><a class="btn btn-glass" href="https://aluno.cakto.com.br/auth/login">Já comprei · Entrar na área de membros</a></div>
   </section>
 
   <section id="como-funciona" aria-labelledby="t-como">
@@ -196,8 +262,8 @@ footer .brandline{font-family:var(--f-brand);font-size:1.8rem;color:var(--berry)
 </div>
 
 <script>
-/* Preencha aqui: número com DDI e DDD (ex.: 5581999999999), @ do Instagram e preço (ex.: "R$ 19,90"). */
-const CONFIG = { whatsapp: "", instagram: "", preco: "" };
+/* Preencha aqui: número com DDI e DDD (ex.: 5581999999999) e @ do Instagram. */
+const CONFIG = { whatsapp: "", instagram: "" };
 
 const msgPadrao = "Oi! Vim pelo site Pedagogia da Lari.";
 document.querySelectorAll(".js-whats").forEach(a => {
@@ -207,14 +273,15 @@ document.querySelectorAll(".js-whats").forEach(a => {
 });
 if (CONFIG.whatsapp) document.getElementById("c-whats").textContent = "+" + CONFIG.whatsapp;
 if (CONFIG.instagram) document.getElementById("c-insta").textContent = "@" + CONFIG.instagram.replace(/^@/, "");
-if (CONFIG.preco) document.getElementById("price").firstChild.textContent = CONFIG.preco;
 document.getElementById("year").textContent = new Date().getFullYear();
 
-const shot = document.getElementById("shot");
-document.querySelectorAll(".thumbs button").forEach(b => b.addEventListener("click", () => {
-  shot.src = b.dataset.src; shot.alt = b.dataset.alt;
-  document.querySelectorAll(".thumbs button").forEach(x => x.setAttribute("aria-current", x === b ? "true" : "false"));
-}));
+document.querySelectorAll(".product").forEach(p => {
+  const shot = p.querySelector(".shot"), btns = p.querySelectorAll(".thumbs button");
+  btns.forEach(b => b.addEventListener("click", () => {
+    shot.src = b.dataset.src; shot.alt = b.dataset.alt;
+    btns.forEach(x => x.setAttribute("aria-current", x === b ? "true" : "false"));
+  }));
+});
 
 /* Brilho do vidro líquido segue o ponteiro */
 document.addEventListener("pointermove", e => {
