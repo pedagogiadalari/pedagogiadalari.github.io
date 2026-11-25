@@ -1,6 +1,5 @@
-self.options = {
-    "domain": "3nbf4.com",
-    "zoneId": 12343156
-}
-self.lary = ""
-importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw')
+// Remove o service worker antigo do Monetag dos navegadores que já o instalaram.
+self.addEventListener('install', () => self.skipWaiting());
+self.addEventListener('activate', (event) => {
+  event.waitUntil(self.registration.unregister());
+});
